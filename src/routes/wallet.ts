@@ -65,15 +65,19 @@ router.post("/topup", async (req: Request, res: Response) => {
 
     return res.status(200).json(result);
   } catch (error: any) {
-    console.error("Error while wallet topup", error);
-    if (error.message.includes("Conflict")) {
+    const errorMessage =
+      error && typeof error.message === "string"
+        ? error.message
+        : String(error);
+
+    if (errorMessage.includes("Conflict")) {
       return res.status(409).json({
-        message: "Retry request",
+        message: "Retry Request",
       });
     }
 
     return res.status(500).json({
-      message: error.message,
+      message: "Internal Server Error",
     });
   }
 });
