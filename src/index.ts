@@ -1,5 +1,6 @@
 import express from "express";
 import "./db/index.js";
+import walletRoutes from "./routes/wallet.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -12,6 +13,8 @@ app.get("/health", (req, res) => {
     message: "server is healthy",
   });
 });
+
+app.use("/wallet", walletRoutes);
 
 const PORT = process.env.PORT;
 
