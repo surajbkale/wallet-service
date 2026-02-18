@@ -29,7 +29,7 @@ SELECT
     gen_random_uuid(),
     w.id,
     100,
-    'Credit',
+    'credit',
     'initial_user_a'
 FROM wallets w
 JOIN users u ON w.user_id = u.id
@@ -41,7 +41,7 @@ SELECT
     gen_random_uuid(),
     w.id,
     50,
-    'Credit',
+    'credit',
     'initial_user_b'
 FROM wallets w
 JOIN users u ON w.user_id = u.id
